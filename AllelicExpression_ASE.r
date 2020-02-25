@@ -1,0 +1,1 @@
+java -jar /work/home/luoqing/software/GenomeAnalysisTK.jar -R /work/home/luoqing/project/mm10/mm10.fa -T ASEReadCounter -o cell_1.csv -I ./cell_1.bam -sites:VCF BCC_mutation.vcf -U ALLOW_N_CIGAR_READS -minDepth 30 --minMappingQuality 30 --minBaseQuality 30 -drf DuplicateRead 
