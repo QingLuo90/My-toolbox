@@ -6,11 +6,11 @@
 
 
 
-setwd("C:\\Users\\think\\Desktop\\RNA")            #设置工作目录（需修改）
+setwd("C:\\Users\\think\\Desktop\\RNA")           
 library("DESeq")
 library("limma")
 
-rt=read.table("WL1A8_count.txt",sep="\t",header=T)  #文件名
+rt=read.table("WL1A8_count.txt",sep="\t",header=T)  
 rt=as.matrix(rt)
 rownames(rt)=rt[,1]
 exp=rt[,2:ncol(rt)]
@@ -21,7 +21,7 @@ data=round(data,0)
 
 #View(head(data))
 
-group=c(rep("WT",3),rep("KO",3))   #按照癌症和正常样品数目修改
+group=c(rep("WT",3),rep("KO",3))  
 design = factor(group)
 newTab = newCountDataSet( data, design )
 newTab = estimateSizeFactors(newTab)
@@ -37,4 +37,4 @@ write.table( diff, file="DESeqOut.xls",sep="\t",quote=F,row.names=F)
 
 normalizeExp=rbind(id=colnames(newData),newData)
 diffExp=rbind(id=colnames(newData),newData[diff$id,])
-write.table(diffExp,file="diffmRNAExp.txt",sep="\t",quote=F,col.names=F)         #输出差异基因校正后的表达值（diffmiRNAExp.txt）
+write.table(diffExp,file="diffmRNAExp.txt",sep="\t",quote=F,col.names=F)         
